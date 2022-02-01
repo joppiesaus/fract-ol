@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:05:50 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/01/31 17:47:12 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/01 13:14:08 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ int	main(int argc, char **argv)
 	for (unsigned int i = 0; i < 1024 * 1024; i++)
 	{
 		d[i] = i;
-		d[i] <<= 4;	
+		d[i] <<= 4;
+		if (i % 2 == 0)
+			d[i] = ~d[i];
+		d[i] &= 0x00ffffff;
 	}
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_put_image_to_window(vars.mlx, vars.win, data.img, 0, 0);
