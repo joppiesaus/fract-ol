@@ -6,13 +6,14 @@
 #    By: jobvan-d <jobvan-d@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/31 13:54:12 by jobvan-d      #+#    #+#                  #
-#    Updated: 2022/01/31 14:19:15 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/02/03 15:12:02 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -mtune=native -march=native -Ofast
+#-g -fsanitize=address
 # -Werror
 
 OBJ_DIR = obj
