@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 20:41:35 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 15:00:19 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/04 15:12:58 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ void	ft_puts_fd(const int fd, const char *str)
 void	ft_puts(const char *str)
 {
 	ft_puts_fd(1, str);
+}
+
+/* prints str with a new line to stdout. */
+void	ft_write_str(const int fd, const char *str)
+{
+	write(fd, str, ft_strlen(str));
 }

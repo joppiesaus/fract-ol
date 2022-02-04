@@ -6,15 +6,13 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:05:50 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 14:59:23 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/04 15:16:18 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
 #include <mlx.h>
-
-#include <stdio.h> // remove
 
 int	parse_args(t_vars *vars, int argc, char **argv)
 {
@@ -31,7 +29,7 @@ int	parse_args(t_vars *vars, int argc, char **argv)
 	else if (*fract_type == 'j' && fract_type[1] == 0)
 	{
 		if (argc < 4 || !is_valid_float_format(argv[2])
-			|| !is_valid_float_format(argv[2]))
+			|| !is_valid_float_format(argv[3]))
 			return (0);
 		vars->julia_c.x = ft_atof(argv[2]);
 		vars->julia_c.y = ft_atof(argv[3]);
@@ -41,10 +39,12 @@ int	parse_args(t_vars *vars, int argc, char **argv)
 	return (0);
 }
 
-static void	display_valid_args(void)
+static void	display_valid_args(const char *program_name)
 {
-	ft_puts("m - displays mandelbrot");
-	ft_puts("j <a> <b> - displays julia set");
+	ft_write_str(1, program_name);
+	ft_puts(" m - displays mandelbrot");
+	ft_write_str(1, program_name);
+	ft_puts(" j <a> <b> - displays julia set");
 }
 
 static void	init_mlx(t_vars	*vars, t_mlx_data *img)
@@ -67,11 +67,11 @@ int	main(int argc, char **argv)
 
 	if (!parse_args(&vars, argc, argv))
 	{
-		display_valid_args();
+		display_valid_args(argv[0]);
 		return (0);
 	}
 	vars.mlx = mlx_init();
-	if (vars.mlx == NULL)
+	if (vars.mlx == (void *)0)
 	{
 		ft_puts_fd(2, "mlx init failed");
 		return (1);
