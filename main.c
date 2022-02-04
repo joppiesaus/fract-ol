@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:05:50 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/03 20:45:33 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/04 13:32:46 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,10 +208,11 @@ int	parse_args(t_vars *vars, int argc, char **argv)
 	}
 	else if (*fract_type == 'j' && fract_type[1] == 0)
 	{
-		if (argc < 4)
+		if (argc < 4 || !is_valid_float_format(argv[2])
+			|| !is_valid_float_format(argv[2]))
 			return (0);
-		vars->julia_c.x = 1.0f; //ft_atof(argv[2]);
-		vars->julia_c.y = -0.3f;//ft_atof(argv[3]);
+		vars->julia_c.x = ft_atof(argv[2]);
+		vars->julia_c.y = ft_atof(argv[3]);
 		vars->fract_func = &julia_pixel;
 		return (1);
 	}

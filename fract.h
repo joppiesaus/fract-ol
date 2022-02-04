@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/03 20:25:38 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/04 13:32:07 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	vec2_divide_scalar(t_vec2 *ref, const float divisor);
 
 float	ft_atof(const char *str);
 void	ft_puts(const char *str);
+int		is_valid_float_format(const char *str);
 
 
 #endif
