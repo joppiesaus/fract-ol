@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 16:25:37 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 13:31:47 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/04 13:38:09 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int	main()
 	COMP("\t\v\r1.000090    \t");	
 	COMP("1.");
 	COMP(".1");
+	COMP("");
+	COMP("    \v\t");
+	COMP("    \v\t.");
 	COMP(".0");
 	COMP("0.0");
 	COMP("1.0");
