@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 15:27:17 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 13:29:25 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/04 13:51:30 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,21 @@ static void	skip_whitespace(char **str)
 	}
 }
 
-static unsigned int	m_pow(unsigned int base, unsigned int exponent)
-{
-	unsigned int	i;
-	unsigned int	result;
-
-	i = 1;
-	result = base;
-	while (i < exponent)
-	{
-		result *= base;
-		i++;
-	}
-	return (result);
-}
-
 static float	atof_postdecimal(const char *str)
 {
 	float		result;
-	const char	*orig_str;
+	float		divisor;
 
 	result = 0.0f;
-	orig_str = str;
+	divisor = 1.0f;
 	while (*str >= '0' && *str <= '9')
 	{
 		result *= 10.0f;
+		divisor *= 10.0f;
 		result += (float)(*str - '0');
 		str++;
 	}
-	result /= (float)(m_pow(10, str - orig_str));
+	result /= divisor;
 	return (result);
 }
 
@@ -78,14 +64,12 @@ float	ft_atof(const char *str)
 	return (result);
 }
 
-int	is_valid_float_format(const char *str)
+int	is_valid_float_format(char *str)
 {
 	char	*str_before_numberskip;
 	int		number_before_dot;
 
-	if (*str == 0)
-		return (0);
-	skip_whitespace((char **)&str);
+	skip_whitespace(&str);
 	if (*str == '-' || *str == '+')
 		str++;
 	str_before_numberskip = str;
