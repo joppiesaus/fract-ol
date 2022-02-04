@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 15:27:17 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 13:29:25 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/04 13:37:06 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ int	is_valid_float_format(const char *str)
 	char	*str_before_numberskip;
 	int		number_before_dot;
 
-	if (*str == 0)
-		return (0);
 	skip_whitespace((char **)&str);
 	if (*str == '-' || *str == '+')
 		str++;
