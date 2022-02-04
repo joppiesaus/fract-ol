@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/01 14:59:42 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/03 20:41:59 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/04 14:58:16 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ float	ft_fabs(const float f)
 
 void	exit_program(const int code, const t_vars *vars)
 {
-	//mlx_destroy_image(vars->img->img, )
+	mlx_destroy_image(vars->mlx, vars->img->img);
 	mlx_destroy_window(vars->mlx, vars->win);
 	exit(code);
 }
