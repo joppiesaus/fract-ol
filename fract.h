@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 15:15:32 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/07 18:34:33 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH (800)
 # define HEIGHT (800)
-# define MAX_ITER (100)
+# define MAX_ITER (210)
 
 # define INITIAL_GRAPH_START_X (-2.0f)
 # define INITIAL_GRAPH_END_X (2.0f)
@@ -55,8 +55,8 @@ typedef struct s_vars
 
 void	exit_program(const int code, const t_vars *vars);
 void	put_pixel(t_mlx_data *data, int x, int y, unsigned int color);
-float	constrain(const int value, const int min, const int max, \
-					const float fmin, const float fmax);
+float	ft_fmap(const int value, const int max, \
+	const float fmin, const float fmax);
 float	ft_fabs(const float f);
 
 void	calc_zoom(t_vars *vars, const float factor);

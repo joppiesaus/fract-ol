@@ -6,13 +6,15 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/01 14:59:42 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 14:58:16 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/07 18:47:35 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
 #include "mlx.h"
+
+#include <stdlib.h> /* exit */
 
 void	put_pixel(t_mlx_data *data, int x, int y, unsigned int color)
 {
@@ -22,10 +24,20 @@ void	put_pixel(t_mlx_data *data, int x, int y, unsigned int color)
 	*((unsigned int *)dst) = color;
 }
 
-float	constrain(const int value, const int min, const int max, \
+/*float	constrain(const int value, const int min, const int max, \
 	const float fmin, const float fmax)
 {
 	return (fmin + ((((float)value) / (float)(max - min)) * (fmax - fmin)));
+}*/
+/* returns a float as a proportion of the int between 0 and max,
+ * starting at fmin and ending at fmax. i.e. map(1, 2, -1.0f 3.0f)
+ * returns 2.0f.
+ * this is basically the above function, except min is just 0.
+ * this is because of the norm. */
+float	ft_fmap(const int value, const int max, \
+	const float fmin, const float fmax)
+{
+	return (fmin + ((((float)value) / (float)(max)) * (fmax - fmin)));
 }
 
 /* The first bit of a IEEE 32 bit float is the sign. If the sign is 1,

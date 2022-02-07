@@ -6,18 +6,16 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:53:49 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 14:55:14 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/07 18:46:46 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
-static void	draw_pixel(t_vars *vars, int i, int x, int y)
+static int	m_colorfunc_1(const int i)
 {
-	unsigned int color;
+	int	color;
 
-	color = 0x00ffffff;
-	//printf("%d\n", i);
 	if (i == 0)
 		color = 0;
 	else if (i == 1)
@@ -31,70 +29,86 @@ static void	draw_pixel(t_vars *vars, int i, int x, int y)
 	else if (i == MAX_ITER)
 		color = 0;
 	else
-		color = (unsigned int)(((float)i / (float)MAX_ITER) * (float)0x00ffffff);
-		//color = constrain(i, 0, MAX_ITER, 0, 0xffffff);
+		color = (unsigned int)(((float)i / (float)MAX_ITER)
+				* (float)0xffffff);
+	return (color);
+}
+
+static int	m_colorfunc_2(const int i)
+{
+	const int	colors[16] = {
+		0x421e0f,
+		0x19071a,
+		0x09012f,
+		0x040449,
+		0x000764,
+		0x0c2c8a,
+		0x1852b1,
+		0x397dd1,
+		0x86b5e5,
+		0xd3ecf8,
+		0xf1e9bf,
+		0xf8c95f,
+		0xffaa00,
+		0xcc8000,
+		0x995700,
+		0x693403
+	};
+
+	return (colors[i & 0xf]);
+}
+
+// TODO; colofrucn var selection
+static void	draw_pixel(t_vars *vars, int i, int x, int y)
+{
+	unsigned int	color;
+
+	if (i == MAX_ITER)
+		color = 0;
+	else
+		color = m_colorfunc_1(i);
 	put_pixel(vars->img, x, y, color);
 }
 
-
-void	julia_pixel(t_vars *vars, int imgx, int imgy)
+static int	brot_inner(t_vars *vars, t_vec2 pos, t_vec2 c)
 {
-	float	x0;
-	float	y0;
-	float	x;
-	float	y;
+	float	oldx;
 	int		i;
-	
-	x0 = constrain(imgx, 0, WIDTH, vars->graph_start.x, vars->graph_end.x);
-	y0 = constrain(imgy, 0, HEIGHT, vars->graph_start.y, vars->graph_end.y);
-	x = x0;
-	y = y0;
+
 	i = 0;
-	float oldx;
 	while (i < MAX_ITER)
 	{
-		oldx = x;
-		x = x * x - y * y;
-		y = 2 * oldx * y; // play around with this
-
-		x += vars->julia_c.x;
-		y += vars->julia_c.y;
-
-		if (ft_fabs(x + y) > 16)
+		oldx = pos.x;
+		pos.x = pos.x * pos.x - pos.y * pos.y;
+		pos.y = 2 * oldx * pos.y; // play around with this
+		pos.x += c.x;
+		pos.y += c.y;
+		if (ft_fabs(pos.x + pos.y) > 16)
 			break ;
 		i++;
 	}
-	draw_pixel(vars, i, imgx, imgy);
+	return (i);
+}
+
+void	julia_pixel(t_vars *vars, int imgx, int imgy)
+{
+	t_vec2	pos;
+
+	pos.x = ft_fmap(imgx, WIDTH, vars->graph_start.x, vars->graph_end.x);
+	pos.y = ft_fmap(imgy, HEIGHT, vars->graph_start.y, vars->graph_end.y);
+	draw_pixel(vars, brot_inner(vars, pos, vars->julia_c), imgx, imgy);
 }
 
 void	brot_pixel(t_vars *vars, int imgx, int imgy)
 {
-	float	x0;
-	float	y0;
-	float	x;
-	float	y;
-	int		i;
-	
-	x0 = constrain(imgx, 0, WIDTH, vars->graph_start.x, vars->graph_end.x);
-	y0 = constrain(imgy, 0, HEIGHT, vars->graph_start.y, vars->graph_end.y);
-	x = 0.0f;
-	y = 0.0f;
-	i = 0;
-	float oldx;
-	while (i < MAX_ITER)
-	{
-		oldx = x;
-		x = x * x - y * y;
-		y = 2 * oldx * y; // play around with this
+	t_vec2	pos;
+	t_vec2	c;
 
-		x += x0;
-		y += y0;
-
-		if (ft_fabs(x + y) > 16)
-			break ;
-		i++;
-	}
-	draw_pixel(vars, i, imgx, imgy);
+	c.x = ft_fmap(imgx, WIDTH, vars->graph_start.x, vars->graph_end.x);
+	c.y = ft_fmap(imgy, HEIGHT, vars->graph_start.y, vars->graph_end.y);
+	pos.x = 0.0f;
+	pos.y = 0.0f;
+	draw_pixel(vars, brot_inner(vars, pos, c), imgx, imgy);
 }
 
 void	iterate_image(t_vars *vars)
