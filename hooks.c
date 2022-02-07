@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:51:19 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 15:00:35 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/07 13:56:27 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 #include "keys.h"
 
 #include <mlx.h>
+
+static int	key_hook_inner(const int keycode, t_vars *vars)
+{
+	if (keycode == KEYCODE_NUMPAD_ZERO)
+		reset_zoom(vars);
+	else if (keycode == KEYCODE_NUMPAD_EIGHT)
+		vars->julia_c.y += 0.1f;
+	else if (keycode == KEYCODE_NUMPAD_TWO)
+		vars->julia_c.y -= 0.1f;
+	else if (keycode == KEYCODE_NUMPAD_FOUR)
+		vars->julia_c.x += 0.1f;
+	else if (keycode == KEYCODE_NUMPAD_SIX)
+		vars->julia_c.x -= 0.1f;
+	else
+		return (0);
+	return (1);
+}
 
 int	key_hook(int keycode, t_vars *vars)
 {
@@ -35,20 +52,8 @@ int	key_hook(int keycode, t_vars *vars)
 		translate(-1.0f, 0, vars);
 	else if (keycode == KEYCODE_ARROWKEY_RIGHT)
 		translate(1.0f, 0, vars);
-	else if (keycode == KEYCODE_NUMPAD_ZERO)
-		reset_zoom(vars);
-	else if (keycode == KEYCODE_NUMPAD_EIGHT)
-		vars->julia_c.y += 0.1f;
-	else if (keycode == KEYCODE_NUMPAD_TWO)
-		vars->julia_c.y -= 0.1f;
-	else if (keycode == KEYCODE_NUMPAD_FOUR)
-		vars->julia_c.x += 0.1f;
-	else if (keycode == KEYCODE_NUMPAD_SIX)
-		vars->julia_c.x -= 0.1f;
-	else
-	{
+	else if (!key_hook_inner(keycode, vars))
 		return (0);
-	}
 	iterate_image(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	return (0);
