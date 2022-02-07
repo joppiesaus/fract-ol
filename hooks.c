@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:51:19 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/07 13:56:27 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/07 14:05:53 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	key_hook_inner(const int keycode, t_vars *vars)
 
 int	key_hook(int keycode, t_vars *vars)
 {
-	printf("%d\n", keycode);
+	printf("%d\n", keycode); // REMOVE
 	if (keycode == KEYCODE_ESC)
 	{
 		exit_program(0, vars);
@@ -61,11 +61,11 @@ int	key_hook(int keycode, t_vars *vars)
 
 int	mouse_hook(int mousecode, int x, int y, t_vars *vars)
 {
-	if (mousecode == 4)
+	if (mousecode == MOUSECODE_SCROLL_DOWN)
 	{
 		calc_zoom(vars, 0.1f);
 	}
-	else if (mousecode == 5)
+	else if (mousecode == MOUSECODE_SCROLL_UP)
 	{
 		calc_zoom(vars, -0.1f);
 	}
