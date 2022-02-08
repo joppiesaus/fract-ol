@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 15:44:45 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/02 15:48:56 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/08 13:36:14 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,10 @@ void	vec2_divide_scalar(t_vec2 *ref, const float divisor)
 {
 	ref->x /= divisor;
 	ref->y /= divisor;
+}
+
+void	vec2_multiply_scalar(t_vec2 *ref, const float multiplier)
+{
+	ref->x *= multiplier;
+	ref->y *= multiplier;
 }

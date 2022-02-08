@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/07 18:34:33 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/08 13:36:03 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,13 @@ float	ft_fmap(const int value, const int max, \
 	const float fmin, const float fmax);
 float	ft_fabs(const float f);
 
-void	calc_zoom(t_vars *vars, const float factor);
+void	calc_zoom(t_vars *vars, int x, int y, const float factor);
 void	translate(float x, float y, t_vars *vars);
 void	reset_zoom(t_vars *vars);
 
 t_vec2	vec2_calc_delta(const t_vec2 a, const t_vec2 b);
 void	vec2_divide_scalar(t_vec2 *ref, const float divisor);
+void	vec2_multiply_scalar(t_vec2 *ref, const float multiplier);
 
 float	ft_atof(const char *str);
 int		is_valid_float_format(const char *str);

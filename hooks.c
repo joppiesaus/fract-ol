@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:51:19 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/07 14:05:53 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/08 13:28:06 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	key_hook(int keycode, t_vars *vars)
 		return (0);
 	}
 	else if (keycode == KEYCODE_NUMPAD_PLUS)
-		calc_zoom(vars, 0.1f);
+		calc_zoom(vars, WIDTH / 2, HEIGHT / 2, 0.1f);
 	else if (keycode == KEYCODE_NUMPAD_MINUS)
-		calc_zoom(vars, -0.1f);
+		calc_zoom(vars, WIDTH / 2, HEIGHT / 2, -0.1f);
 	else if (keycode == KEYCODE_ARROWKEY_UP)
 		translate(0, -1.0f, vars);
 	else if (keycode == KEYCODE_ARROWKEY_DOWN)
@@ -63,11 +63,11 @@ int	mouse_hook(int mousecode, int x, int y, t_vars *vars)
 {
 	if (mousecode == MOUSECODE_SCROLL_DOWN)
 	{
-		calc_zoom(vars, 0.1f);
+		calc_zoom(vars, x, y, 0.1f);
 	}
 	else if (mousecode == MOUSECODE_SCROLL_UP)
 	{
-		calc_zoom(vars, -0.1f);
+		calc_zoom(vars, x, y, -0.1f);
 	}
 	else
 	{
