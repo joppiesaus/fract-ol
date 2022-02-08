@@ -6,16 +6,21 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 13:36:03 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/08 14:29:17 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_H
 # define FRACT_H
+/* ======     CONTROLS     ===== 
+ * numrow 1-2: change colors
+ * numpad 4: 
+TODO
+ */
 
 # define WIDTH (800)
 # define HEIGHT (800)
-# define MAX_ITER (210)
+# define MAX_ITER (100)
 
 # define INITIAL_GRAPH_START_X (-2.0f)
 # define INITIAL_GRAPH_END_X (2.0f)
@@ -50,6 +55,7 @@ typedef struct s_vars
 	t_vec2		graph_end;
 	t_vec2		julia_c;
 	float		zoom;
+	int			(*color_func)(const int);
 	void		(*fract_func)(struct s_vars *, int, int);
 }				t_vars;
 
@@ -81,5 +87,9 @@ int		destroy_hook(t_vars	*vars);
 void	iterate_image(t_vars *vars);
 void	brot_pixel(t_vars *vars, int imgx, int imgy);
 void	julia_pixel(t_vars *vars, int imgx, int imgy);
+
+int		fract_colorfunc_1(const int i);
+int		fract_colorfunc_2(const int i);
+void	draw_pixel(t_vars *vars, int i, int x, int y);
 
 #endif

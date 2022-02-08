@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:05:50 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/07 18:15:13 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/08 14:23:22 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	display_valid_args(const char *program_name)
 
 static void	init_mlx(t_vars	*vars, t_mlx_data *img)
 {
+	vars->color_func = &fract_colorfunc_1;
 	vars->win = mlx_new_window(vars->mlx, WIDTH, HEIGHT, "fract-ol");
 	img->img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
