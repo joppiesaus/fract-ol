@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 13:50:05 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 13:36:27 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/08 17:43:39 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	calc_zoom(t_vars *vars, int x, int y, const float factor)
 
 void	reset_zoom(t_vars *vars)
 {
-	vars->zoom = 1.0f;
-	vars->graph_start.x = INITIAL_GRAPH_START_X * vars->zoom;
-	vars->graph_start.y = INITIAL_GRAPH_START_Y * vars->zoom;
-	vars->graph_end.x = INITIAL_GRAPH_END_X * vars->zoom;
-	vars->graph_end.y = INITIAL_GRAPH_END_Y * vars->zoom;
+	vars->graph_start.x = -1.0f * (float)WIDTH / ((float)DEFAULT_WIDTH / 2.0f);
+	vars->graph_start.y = -1.0f * (float)HEIGHT
+		/ ((float)DEFAULT_HEIGHT / 2.0f);
+	vars->graph_end.x = 1.0f * (float)WIDTH / ((float)DEFAULT_WIDTH / 2.0f);
+	vars->graph_end.y = 1.0f * (float)HEIGHT / ((float)DEFAULT_HEIGHT / 2.0f);
 }

@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:51:19 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 14:28:49 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/08 17:07:37 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	key_hook_inner(const int keycode, t_vars *vars)
 	else if (keycode == KEYCODE_NUMPAD_TWO)
 		vars->julia_c.y -= 0.1f;
 	else if (keycode == KEYCODE_NUMPAD_FOUR)
-		vars->julia_c.x += 0.1f;
-	else if (keycode == KEYCODE_NUMPAD_SIX)
 		vars->julia_c.x -= 0.1f;
+	else if (keycode == KEYCODE_NUMPAD_SIX)
+		vars->julia_c.x += 0.1f;
 	else if (keycode == KEYCODE_NUMROW_ONE
 		&& vars->color_func != &fract_colorfunc_1)
 		vars->color_func = &fract_colorfunc_1;

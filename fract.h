@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 14:29:17 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/08 17:46:02 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 # define FRACT_H
 /* ======     CONTROLS     ===== 
  * numrow 1-2: change colors
- * numpad 4: 
-TODO
+ * arrow keys:	move
+ * numpad 0:	reset zoom
+ * scroll:		zoom
+ * numpad +:	zoom in
+ * numpad -:	zoom out
+ * escape:		quit
+
+ * following only applicable to the julia set:
+ * numpad 4: decrement real component of complex number(x axis)
+ * numpad 6: increment real component of complex number(x axis)
+ * numpad 2: decrement imaginary component of complex number(y axis)
+ * numpad 8: increment imaginary component of complex number(y axis)
  */
 
 # define WIDTH (800)
 # define HEIGHT (800)
 # define MAX_ITER (100)
 
-# define INITIAL_GRAPH_START_X (-2.0f)
-# define INITIAL_GRAPH_END_X (2.0f)
-# define INITIAL_GRAPH_START_Y (-2.0f)
-# define INITIAL_GRAPH_END_Y (2.0f)
-/*# define INITIAL_GRAPH_START_X (-01.42f)
-# define INITIAL_GRAPH_END_X (1.0f)
-# define INITIAL_GRAPH_START_Y (-1.12f)
-# define INITIAL_GRAPH_END_Y (1.12f)*/
+# define DEFAULT_WIDTH (800)
+# define DEFAULT_HEIGHT (800)
 
 typedef struct s_mlx_data
 {
@@ -54,7 +58,6 @@ typedef struct s_vars
 	t_vec2		graph_start;
 	t_vec2		graph_end;
 	t_vec2		julia_c;
-	float		zoom;
 	int			(*color_func)(const int);
 	void		(*fract_func)(struct s_vars *, int, int);
 }				t_vars;
