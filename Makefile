@@ -6,19 +6,19 @@
 #    By: jobvan-d <jobvan-d@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/31 13:54:12 by jobvan-d      #+#    #+#                  #
-#    Updated: 2022/02/03 15:12:02 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/02/09 17:52:46 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-CFLAGS = -Wall -Wextra -mtune=native -march=native -Ofast
-#-g -fsanitize=address
-# -Werror
+# SUPER TIP: Add -mtune=native -march=native -Ofast to make it much faster!
+CFLAGS = -Wall -Wextra -Werror 
 
 OBJ_DIR = obj
-DEPS = $(wildcard *.c)
-HEADERS = $(wildcard *.h)
+DEPS = drawing.c fract_funcs.c ft_atof.c hooks.c libft_funcs.c main.c \
+	translation.c util.c vec2.c
+HEADERS = fract.h keys.h
 OBJ = $(DEPS:%.c=$(OBJ_DIR)/%.o)
 
 MLX_DIR = ./minilibx_opengl_20191021
