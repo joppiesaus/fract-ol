@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 17:50:20 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 17:55:46 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 # define WIDTH (800)
 # define HEIGHT (800)
-# define MAX_ITER (200)
+# define MAX_ITER (100)
 
 # define DEFAULT_WIDTH (800)
 # define DEFAULT_HEIGHT (800)
