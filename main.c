@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:05:50 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 15:52:47 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 17:39:06 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ static void	display_valid_args(const char *program_name)
 	ft_write_str(1, program_name);
 	ft_puts(" m - displays mandelbrot");
 	ft_write_str(1, program_name);
-	ft_puts(" j <a> <b> - displays julia set");
+	ft_puts(" j <real> <imaginary> - displays julia set");
 	ft_write_str(1, program_name);
 	ft_puts(" b - displays \"burning ship fractal\"");
 	ft_write_str(1, program_name);
-	ft_puts(" jb <a> <b> - displays \"burning ship fractal\" except with \
-		julia parameters");
+	ft_puts(" jb <real> <imaginary> - displays \"burning ship fractal\" \
+except with\njulia set parameters");
 }
 
 static void	init_mlx(t_vars	*vars, t_mlx_data *img)

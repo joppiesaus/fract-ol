@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 15:55:41 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 17:50:20 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,14 @@ int		key_hook(int keycode, t_vars *vars);
 int		mouse_hook(int mousecode, int x, int y, t_vars *vars);
 int		destroy_hook(t_vars	*vars);
 
-void	iterate_image(t_vars *vars);
 void	brot_pixel(t_vars *vars, int imgx, int imgy);
 void	julia_pixel(t_vars *vars, int imgx, int imgy);
-int		burning_ship_inner(t_vec2 pos, t_vec2 c);
 int		brot_inner(t_vec2 pos, t_vec2 c);
+int		burning_ship_inner(t_vec2 pos, t_vec2 c);
 
 int		fract_colorfunc_1(const int i);
 int		fract_colorfunc_2(const int i);
 void	draw_pixel(t_vars *vars, int i, int x, int y);
+void	iterate_image(t_vars *vars);
 
 #endif
