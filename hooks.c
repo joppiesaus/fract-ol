@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:51:19 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 17:07:37 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 16:00:53 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static int	key_hook_inner(const int keycode, t_vars *vars)
 
 int	key_hook(int keycode, t_vars *vars)
 {
-	printf("%d\n", keycode); // REMOVE
 	if (keycode == KEYCODE_ESC)
 	{
 		exit_program(0, vars);

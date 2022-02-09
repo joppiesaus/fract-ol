@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 17:46:02 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 15:55:41 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@
  * numpad 2: decrement imaginary component of complex number(y axis)
  * numpad 8: increment imaginary component of complex number(y axis)
  */
+/* ./fractol jb 0 0.3 is really cool. After all, math is just making stuff up
+ * and seeing what happens. */
 
 # define WIDTH (800)
 # define HEIGHT (800)
-# define MAX_ITER (100)
+# define MAX_ITER (200)
 
 # define DEFAULT_WIDTH (800)
 # define DEFAULT_HEIGHT (800)
@@ -60,6 +62,7 @@ typedef struct s_vars
 	t_vec2		julia_c;
 	int			(*color_func)(const int);
 	void		(*fract_func)(struct s_vars *, int, int);
+	int			(*inner_fract_func)(t_vec2, t_vec2);
 }				t_vars;
 
 void	exit_program(const int code, const t_vars *vars);
@@ -90,6 +93,8 @@ int		destroy_hook(t_vars	*vars);
 void	iterate_image(t_vars *vars);
 void	brot_pixel(t_vars *vars, int imgx, int imgy);
 void	julia_pixel(t_vars *vars, int imgx, int imgy);
+int		burning_ship_inner(t_vec2 pos, t_vec2 c);
+int		brot_inner(t_vec2 pos, t_vec2 c);
 
 int		fract_colorfunc_1(const int i);
 int		fract_colorfunc_2(const int i);

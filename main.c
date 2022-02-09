@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:05:50 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 14:23:22 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 15:52:47 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,25 @@ int	parse_args(t_vars *vars, int argc, char **argv)
 {
 	const char	*fract_type;
 
-	if (argc < 2)
-		return (0);
 	fract_type = argv[1];
+	vars->fract_func = &brot_pixel;
+	vars->inner_fract_func = &brot_inner;
 	if (*fract_type == 'm' && fract_type[1] == 0)
-	{
 		vars->fract_func = &brot_pixel;
-	}
-	else if (*fract_type == 'j' && fract_type[1] == 0)
+	else if (*fract_type == 'b' && fract_type[1] == 0)
+		vars->inner_fract_func = &burning_ship_inner;
+	else if (*fract_type == 'j')
 	{
+		if (fract_type[1] == 'b' && fract_type[2] == 0)
+			vars->inner_fract_func = &burning_ship_inner;
+		else if (fract_type[1] != 0)
+			return (0);
 		if (argc < 4 || !is_valid_float_format(argv[2])
 			|| !is_valid_float_format(argv[3]))
 			return (0);
+		vars->fract_func = &julia_pixel;
 		vars->julia_c.x = ft_atof(argv[2]);
 		vars->julia_c.y = ft_atof(argv[3]);
-		vars->fract_func = &julia_pixel;
 	}
 	else
 		return (0);
@@ -45,6 +49,11 @@ static void	display_valid_args(const char *program_name)
 	ft_puts(" m - displays mandelbrot");
 	ft_write_str(1, program_name);
 	ft_puts(" j <a> <b> - displays julia set");
+	ft_write_str(1, program_name);
+	ft_puts(" b - displays \"burning ship fractal\"");
+	ft_write_str(1, program_name);
+	ft_puts(" jb <a> <b> - displays \"burning ship fractal\" except with \
+		julia parameters");
 }
 
 static void	init_mlx(t_vars	*vars, t_mlx_data *img)
@@ -66,7 +75,7 @@ int	main(int argc, char **argv)
 	t_vars		vars;
 	t_mlx_data	data;
 
-	if (!parse_args(&vars, argc, argv))
+	if (argc < 2 || !parse_args(&vars, argc, argv))
 	{
 		display_valid_args(argv[0]);
 		return (0);

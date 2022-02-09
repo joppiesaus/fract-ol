@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/08 14:20:43 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 14:21:41 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 16:00:25 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,22 @@ void	draw_pixel(t_vars *vars, int i, int x, int y)
 	else
 		color = (*vars->color_func)(i);
 	put_pixel(vars->img, x, y, color);
+}
+
+void	iterate_image(t_vars *vars)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			(*vars->fract_func)(vars, x, y);
+			x++;
+		}
+		y++;
+	}
 }
