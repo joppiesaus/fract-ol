@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:51:19 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 16:00:53 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 18:38:19 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static int	key_hook_inner(const int keycode, t_vars *vars)
 	if (keycode == KEYCODE_NUMPAD_ZERO)
 		reset_zoom(vars);
 	else if (keycode == KEYCODE_NUMPAD_EIGHT)
-		vars->julia_c.y += 0.1f;
+		vars->julia_c.y += 0.1;
 	else if (keycode == KEYCODE_NUMPAD_TWO)
-		vars->julia_c.y -= 0.1f;
+		vars->julia_c.y -= 0.1;
 	else if (keycode == KEYCODE_NUMPAD_FOUR)
-		vars->julia_c.x -= 0.1f;
+		vars->julia_c.x -= 0.1;
 	else if (keycode == KEYCODE_NUMPAD_SIX)
-		vars->julia_c.x += 0.1f;
+		vars->julia_c.x += 0.1;
 	else if (keycode == KEYCODE_NUMROW_ONE
 		&& vars->color_func != &fract_colorfunc_1)
 		vars->color_func = &fract_colorfunc_1;
@@ -46,17 +46,17 @@ int	key_hook(int keycode, t_vars *vars)
 		return (0);
 	}
 	else if (keycode == KEYCODE_NUMPAD_PLUS)
-		calc_zoom(vars, WIDTH / 2, HEIGHT / 2, 0.1f);
+		calc_zoom(vars, WIDTH / 2, HEIGHT / 2, 0.1);
 	else if (keycode == KEYCODE_NUMPAD_MINUS)
-		calc_zoom(vars, WIDTH / 2, HEIGHT / 2, -0.1f);
+		calc_zoom(vars, WIDTH / 2, HEIGHT / 2, -0.1);
 	else if (keycode == KEYCODE_ARROWKEY_UP)
-		translate(0, -1.0f, vars);
+		translate(0, -1.0, vars);
 	else if (keycode == KEYCODE_ARROWKEY_DOWN)
-		translate(0, 1.0f, vars);
+		translate(0, 1.0, vars);
 	else if (keycode == KEYCODE_ARROWKEY_LEFT)
-		translate(-1.0f, 0, vars);
+		translate(-1.0, 0, vars);
 	else if (keycode == KEYCODE_ARROWKEY_RIGHT)
-		translate(1.0f, 0, vars);
+		translate(1.0, 0, vars);
 	else if (!key_hook_inner(keycode, vars))
 		return (0);
 	iterate_image(vars);
@@ -68,11 +68,11 @@ int	mouse_hook(int mousecode, int x, int y, t_vars *vars)
 {
 	if (mousecode == MOUSECODE_SCROLL_DOWN)
 	{
-		calc_zoom(vars, x, y, 0.1f);
+		calc_zoom(vars, x, y, 0.1);
 	}
 	else if (mousecode == MOUSECODE_SCROLL_UP)
 	{
-		calc_zoom(vars, x, y, -0.1f);
+		calc_zoom(vars, x, y, -0.1);
 	}
 	else
 	{

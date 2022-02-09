@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_atof.c                                          :+:    :+:            */
+/*   ft_atod.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 15:27:17 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 13:52:45 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 18:37:11 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@ static void	skip_whitespace(char **str)
 	}
 }
 
-static float	atof_postdecimal(const char *str)
+static double	atod_postdecimal(const char *str)
 {
-	float		result;
-	float		divisor;
+	double		result;
+	double		divisor;
 
-	result = 0.0f;
-	divisor = 1.0f;
+	result = 0.0;
+	divisor = 1.0;
 	while (*str >= '0' && *str <= '9')
 	{
-		result *= 10.0f;
-		divisor *= 10.0f;
-		result += (float)(*str - '0');
+		result *= 10.0;
+		divisor *= 10.0;
+		result += (double)(*str - '0');
 		str++;
 	}
 	result /= divisor;
 	return (result);
 }
 
-float	ft_atof(const char *str)
+double	ft_atod(const char *str)
 {
-	float	result;
+	double	result;
 	int		is_negative;
 
 	skip_whitespace((char **)&str);
@@ -50,21 +50,21 @@ float	ft_atof(const char *str)
 	}
 	else if (*str == '+')
 		str++;
-	result = 0.0f;
+	result = 0.0;
 	while (*str >= '0' && *str <= '9')
 	{
-		result *= 10.0f;
-		result += (float)(*str - '0');
+		result *= 10.0;
+		result += (double)(*str - '0');
 		str++;
 	}
 	if (*str == '.')
-		result += atof_postdecimal(str + 1);
+		result += atod_postdecimal(str + 1);
 	if (is_negative)
 		result = -result;
 	return (result);
 }
 
-int	is_valid_float_format(char *str)
+int	is_valid_double_format(char *str)
 {
 	char	*str_before_numberskip;
 	int		number_before_dot;

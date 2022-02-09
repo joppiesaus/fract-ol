@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 17:55:46 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 18:40:22 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ typedef struct s_mlx_data
 
 typedef struct s_vec2
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }				t_vec2;
 
 typedef struct s_vars
@@ -67,20 +67,20 @@ typedef struct s_vars
 
 void	exit_program(const int code, const t_vars *vars);
 void	put_pixel(t_mlx_data *data, int x, int y, unsigned int color);
-float	ft_fmap(const int value, const int max, \
-	const float fmin, const float fmax);
-float	ft_fabs(const float f);
+double	ft_dmap(const int value, const int max, \
+	const double fmin, const double fmax);
+double	ft_dabs(const double f);
 
-void	calc_zoom(t_vars *vars, int x, int y, const float factor);
-void	translate(float x, float y, t_vars *vars);
+void	calc_zoom(t_vars *vars, int x, int y, const double factor);
+void	translate(double x, double y, t_vars *vars);
 void	reset_zoom(t_vars *vars);
 
 t_vec2	vec2_calc_delta(const t_vec2 a, const t_vec2 b);
-void	vec2_divide_scalar(t_vec2 *ref, const float divisor);
-void	vec2_multiply_scalar(t_vec2 *ref, const float multiplier);
+void	vec2_divide_scalar(t_vec2 *ref, const double divisor);
+void	vec2_multiply_scalar(t_vec2 *ref, const double multiplier);
 
-float	ft_atof(const char *str);
-int		is_valid_float_format(const char *str);
+double	ft_atod(const char *str);
+int		is_valid_double_format(const char *str);
 
 void	ft_puts_fd(const int fd, const char *str);
 void	ft_puts(const char *str);

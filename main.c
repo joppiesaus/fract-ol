@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:05:50 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 17:39:06 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 18:32:54 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	parse_args(t_vars *vars, int argc, char **argv)
 			vars->inner_fract_func = &burning_ship_inner;
 		else if (fract_type[1] != 0)
 			return (0);
-		if (argc < 4 || !is_valid_float_format(argv[2])
-			|| !is_valid_float_format(argv[3]))
+		if (argc < 4 || !is_valid_double_format(argv[2])
+			|| !is_valid_double_format(argv[3]))
 			return (0);
 		vars->fract_func = &julia_pixel;
-		vars->julia_c.x = ft_atof(argv[2]);
-		vars->julia_c.y = ft_atof(argv[3]);
+		vars->julia_c.x = ft_atod(argv[2]);
+		vars->julia_c.y = ft_atod(argv[3]);
 	}
 	else
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/08 14:20:43 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 17:46:28 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/09 18:30:42 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	fract_colorfunc_1(const int i)
 	else if (i == 4)
 		color = 0x00ff00ff;
 	else
-		color = (unsigned int)(((float)i / (float)MAX_ITER)
-				* (float)0xffffff);
+		color = (unsigned int)(((double)i / (double)MAX_ITER)
+				* (double)0xffffff);
 	return (color);
 }
 

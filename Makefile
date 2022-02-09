@@ -6,17 +6,17 @@
 #    By: jobvan-d <jobvan-d@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/31 13:54:12 by jobvan-d      #+#    #+#                  #
-#    Updated: 2022/02/09 17:52:46 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/02/09 18:34:05 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
 # SUPER TIP: Add -mtune=native -march=native -Ofast to make it much faster!
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -mtune=native -march=native -Ofast
 
 OBJ_DIR = obj
-DEPS = drawing.c fract_funcs.c ft_atof.c hooks.c libft_funcs.c main.c \
+DEPS = drawing.c fract_funcs.c ft_atod.c hooks.c libft_funcs.c main.c \
 	translation.c util.c vec2.c
 HEADERS = fract.h keys.h
 OBJ = $(DEPS:%.c=$(OBJ_DIR)/%.o)
