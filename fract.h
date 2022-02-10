@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 18:40:22 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/10 15:17:02 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@
 /* ./fractol jb 0 0.3 is really cool. After all, math is just making stuff up
  * and seeing what happens. */
 
+# define NTHREADS (4)
+
 # define WIDTH (800)
 # define HEIGHT (800)
-# define MAX_ITER (100)
+# define MAX_ITER (400)
 
 # define DEFAULT_WIDTH (800)
 # define DEFAULT_HEIGHT (800)
@@ -64,6 +66,12 @@ typedef struct s_vars
 	void		(*fract_func)(struct s_vars *, int, int);
 	int			(*inner_fract_func)(t_vec2, t_vec2);
 }				t_vars;
+
+typedef struct s_thread_args
+{
+	t_vars	*vars;
+	int		start;
+}				t_thread_args;
 
 void	exit_program(const int code, const t_vars *vars);
 void	put_pixel(t_mlx_data *data, int x, int y, unsigned int color);

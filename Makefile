@@ -6,7 +6,7 @@
 #    By: jobvan-d <jobvan-d@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/31 13:54:12 by jobvan-d      #+#    #+#                  #
-#    Updated: 2022/02/09 18:34:05 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/02/10 15:15:21 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -mtune=native -march=native -Ofast
 
 OBJ_DIR = obj
 DEPS = drawing.c fract_funcs.c ft_atod.c hooks.c libft_funcs.c main.c \
-	translation.c util.c vec2.c
+	translation.c util.c vec2.c threads.c
 HEADERS = fract.h keys.h
 OBJ = $(DEPS:%.c=$(OBJ_DIR)/%.o)
 
