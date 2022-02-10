@@ -6,11 +6,36 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/08 14:20:43 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 18:30:42 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/10 14:08:59 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
+
+unsigned int	ft_floor(double i)
+{
+	return ((unsigned int)i);
+}
+
+unsigned char	lininterp_byte(unsigned char a, unsigned char b, double i)
+{
+	return (a + ft_floor((double)(b - a) * i));
+}
+
+unsigned int	col_linear_interp(unsigned int a, unsigned int b, double i)
+{
+	unsigned int	color;
+
+	color = 0;
+	color = lininterp_byte(a & 0xff, b & 0xff, i);
+	a >>= 8;
+	b >>= 8;
+	color += lininterp_byte(a & 0xff, b & 0xff, i) << 8;
+	a >>= 8;
+	b >>= 8;
+	color += lininterp_byte(a & 0xff, b & 0xff, i) << 16;
+	return (color);
+}
 
 int	fract_colorfunc_1(const int i)
 {
