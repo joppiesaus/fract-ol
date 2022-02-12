@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 15:27:17 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 18:37:11 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/12 13:48:36 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static double	atod_postdecimal(const char *str)
 	return (result);
 }
 
+/* returns a double parsed from string str */
 double	ft_atod(const char *str)
 {
 	double	result;
@@ -67,7 +68,6 @@ double	ft_atod(const char *str)
 int	is_valid_double_format(char *str)
 {
 	char	*str_before_numberskip;
-	int		number_before_dot;
 
 	skip_whitespace(&str);
 	if (*str == '-' || *str == '+')
@@ -75,8 +75,7 @@ int	is_valid_double_format(char *str)
 	str_before_numberskip = str;
 	while (*str >= '0' && *str <= '9')
 		str++;
-	number_before_dot = str_before_numberskip < str;
-	if (*str == 0 && number_before_dot)
+	if (*str == 0 && str > str_before_numberskip)
 		return (1);
 	if (*str != '.')
 		return (0);
@@ -84,7 +83,7 @@ int	is_valid_double_format(char *str)
 	str_before_numberskip = str;
 	while (*str >= '0' && *str <= '9')
 		str++;
-	if (str_before_numberskip == str && !number_before_dot)
+	if (str_before_numberskip == str)
 		return (0);
 	skip_whitespace(&str);
 	return (*str == 0);
