@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test_atof.c                                        :+:    :+:            */
+/*   test_atod.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 16:25:37 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/04 13:38:09 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/12 13:54:27 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-float	ft_atof(const char *str);
-int	is_valid_float_format(const char *str);
+double	ft_atod(const char *str);
+int	is_valid_double_format(const char *str);
 
 void	test(const char *s, int line)
 {
-	float	a,b;
+	double	a,b;
 
 	a = atof(s);
-	b = ft_atof(s);
+	b = ft_atod(s);
 
-	printf("%d: %s: %f, %f\t", is_valid_float_format(s), s, a, b);
+	printf("%d: %s: %f, %f\t", is_valid_double_format(s), s, a, b);
 	if (a == b)
 	{
 		printf("good!\n");
