@@ -6,12 +6,12 @@
 #    By: jobvan-d <jobvan-d@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/31 13:54:12 by jobvan-d      #+#    #+#                  #
-#    Updated: 2022/02/12 13:27:48 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/02/12 13:36:52 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
-CC = gcc
+CC = cc
 # SUPER TIP: Add -mtune=native -march=native -Ofast to make it much faster!
 CFLAGS = -Wall -Wextra -Werror
 
@@ -46,4 +46,8 @@ fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -C $(MLX_DIR) $^
 
+bonus: $(NAME)
+
 re: fclean $(NAME)
+
+.PHONY: all clean fclean bonus re
