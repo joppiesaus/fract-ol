@@ -6,13 +6,13 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/08 14:20:43 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/10 15:15:11 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/03/24 13:46:00 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
-int	fract_colorfunc_1(const int i)
+int	fract_colorfunc_1(const int i, const int max_iter)
 {
 	int	color;
 
@@ -27,12 +27,12 @@ int	fract_colorfunc_1(const int i)
 	else if (i == 4)
 		color = 0x00ff00ff;
 	else
-		color = (unsigned int)(((double)i / (double)MAX_ITER)
+		color = (unsigned int)(((double)i / (double)max_iter)
 				* (double)0xffffff);
 	return (color);
 }
 
-int	fract_colorfunc_2(const int i)
+int	fract_colorfunc_2(const int i, const int max_iter)
 {
 	const int	colors[16] = {
 		0x421e0f,
@@ -53,6 +53,7 @@ int	fract_colorfunc_2(const int i)
 		0x693403
 	};
 
+	(void)max_iter;
 	return (colors[i & 0xf]);
 }
 
@@ -60,9 +61,9 @@ void	draw_pixel(t_vars *vars, int i, int x, int y)
 {
 	unsigned int	color;
 
-	if (i == MAX_ITER)
+	if (i == vars->max_iter)
 		color = 0;
 	else
-		color = (*vars->color_func)(i);
+		color = (*vars->color_func)(i, vars->max_iter);
 	put_pixel(vars->img, x, y, color);
 }

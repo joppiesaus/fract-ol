@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:51:19 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/10 15:08:21 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/03/24 13:56:42 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 #include "keys.h"
 
 #include <mlx.h>
+
+static int	check_iterchange_keys(const int keycode, t_vars *vars)
+{
+	if (keycode == KEYCODE_NUMROW_THREE)
+		vars->max_iter = 100;
+	else if (keycode == KEYCODE_NUMROW_FOUR)
+		vars->max_iter = 200;
+	else if (keycode == KEYCODE_NUMROW_FIVE)
+		vars->max_iter = 400;
+	else if (keycode == KEYCODE_NUMROW_SIX)
+		vars->max_iter = 800;
+	else if (keycode == KEYCODE_NUMROW_SEVEN)
+		vars->max_iter = 1600;
+	else
+		return (0);
+	return (1);
+}
 
 static int	key_hook_inner(const int keycode, t_vars *vars)
 {
@@ -34,7 +51,7 @@ static int	key_hook_inner(const int keycode, t_vars *vars)
 		&& vars->color_func != &fract_colorfunc_2)
 		vars->color_func = &fract_colorfunc_2;
 	else
-		return (0);
+		return (check_iterchange_keys(keycode, vars));
 	return (1);
 }
 

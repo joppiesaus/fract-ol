@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:05:50 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 18:32:54 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/03/24 13:45:27 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	init_mlx(t_vars	*vars, t_mlx_data *img)
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	vars->img = img;
+	vars->max_iter = DEFAULT_MAX_ITER;
 	reset_zoom(vars);
 	mlx_key_hook(vars->win, key_hook, vars);
 	mlx_mouse_hook(vars->win, mouse_hook, vars);

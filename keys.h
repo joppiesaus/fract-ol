@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 13:38:46 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/08 14:25:08 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/03/24 13:50:59 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 
 # define KEYCODE_NUMROW_ONE (18)
 # define KEYCODE_NUMROW_TWO (19)
+# define KEYCODE_NUMROW_THREE (20)
+# define KEYCODE_NUMROW_FOUR (21)
+# define KEYCODE_NUMROW_FIVE (23)
+# define KEYCODE_NUMROW_SIX (22)
+# define KEYCODE_NUMROW_SEVEN (26)
 
 # define MOUSECODE_SCROLL_UP (5)
 # define MOUSECODE_SCROLL_DOWN (4)

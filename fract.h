@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/31 17:04:56 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/10 15:17:02 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/03/24 13:53:14 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACT_H
 /* ======     CONTROLS     ===== 
  * numrow 1-2: change colors
+ * numrow 3-7: change iteration count
  * arrow keys:	move
  * numpad 0:	reset zoom
  * scroll:		zoom
@@ -34,7 +35,7 @@
 
 # define WIDTH (800)
 # define HEIGHT (800)
-# define MAX_ITER (400)
+# define DEFAULT_MAX_ITER (100)
 
 # define DEFAULT_WIDTH (800)
 # define DEFAULT_HEIGHT (800)
@@ -62,9 +63,10 @@ typedef struct s_vars
 	t_vec2		graph_start;
 	t_vec2		graph_end;
 	t_vec2		julia_c;
-	int			(*color_func)(const int);
+	int			(*color_func)(const int, const int);
 	void		(*fract_func)(struct s_vars *, int, int);
-	int			(*inner_fract_func)(t_vec2, t_vec2);
+	int			(*inner_fract_func)(t_vec2, t_vec2, const int);
+	int			max_iter;
 }				t_vars;
 
 typedef struct s_thread_args
@@ -100,11 +102,11 @@ int		destroy_hook(t_vars	*vars);
 
 void	brot_pixel(t_vars *vars, int imgx, int imgy);
 void	julia_pixel(t_vars *vars, int imgx, int imgy);
-int		brot_inner(t_vec2 pos, t_vec2 c);
-int		burning_ship_inner(t_vec2 pos, t_vec2 c);
+int		brot_inner(t_vec2 pos, t_vec2 c, const int max_iter);
+int		burning_ship_inner(t_vec2 pos, t_vec2 c, const int max_iter);
 
-int		fract_colorfunc_1(const int i);
-int		fract_colorfunc_2(const int i);
+int		fract_colorfunc_1(const int i, const int max_iter);
+int		fract_colorfunc_2(const int i, const int max_iter);
 void	draw_pixel(t_vars *vars, int i, int x, int y);
 void	iterate_image(t_vars *vars);
 

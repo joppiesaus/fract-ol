@@ -6,19 +6,19 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 14:53:49 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/02/09 18:36:49 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/03/24 13:52:30 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
-int	brot_inner(t_vec2 pos, t_vec2 c)
+int	brot_inner(t_vec2 pos, t_vec2 c, const int max_iter)
 {
 	double	oldx;
 	int		i;
 
 	i = 0;
-	while (i < MAX_ITER)
+	while (i < max_iter)
 	{
 		oldx = pos.x;
 		pos.x = pos.x * pos.x - pos.y * pos.y;
@@ -34,14 +34,14 @@ int	brot_inner(t_vec2 pos, t_vec2 c)
 
 /* basically this is the mandelbrot fractal, except
  * calculated with absolute values. */
-int	burning_ship_inner(t_vec2 pos, t_vec2 c)
+int	burning_ship_inner(t_vec2 pos, t_vec2 c, const int max_iter)
 {
 	double	oldx;
 	int		i;
 	t_vec2	pos_sq;
 
 	i = 0;
-	while (i < MAX_ITER)
+	while (i < max_iter)
 	{
 		pos_sq = pos;
 		pos_sq.x *= pos_sq.x;
@@ -62,7 +62,9 @@ void	julia_pixel(t_vars *vars, int imgx, int imgy)
 
 	pos.x = ft_dmap(imgx, WIDTH, vars->graph_start.x, vars->graph_end.x);
 	pos.y = ft_dmap(imgy, HEIGHT, vars->graph_start.y, vars->graph_end.y);
-	draw_pixel(vars, (*vars->inner_fract_func)(pos, vars->julia_c), imgx, imgy);
+	draw_pixel(vars,
+		(*vars->inner_fract_func)(pos, vars->julia_c, vars->max_iter),
+		imgx, imgy);
 }
 
 void	brot_pixel(t_vars *vars, int imgx, int imgy)
@@ -74,5 +76,6 @@ void	brot_pixel(t_vars *vars, int imgx, int imgy)
 	c.y = ft_dmap(imgy, HEIGHT, vars->graph_start.y, vars->graph_end.y);
 	pos.x = 0.0;
 	pos.y = 0.0;
-	draw_pixel(vars, (*vars->inner_fract_func)(pos, c), imgx, imgy);
+	draw_pixel(vars, (*vars->inner_fract_func)(pos, c, vars->max_iter),
+		imgx, imgy);
 }
